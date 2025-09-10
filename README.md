@@ -13,3 +13,5 @@ in tailwind.config.js:
 plugins: [
     require("daisyui")
   ],
+
+npm install react-router-dom  
