@@ -6,19 +6,29 @@ import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
-    const [emailId, setEmailId] = useState("");
-    const [password, setPassword] = useState("");
+    const [emailId, setEmailId] = useState("Anudeep@gmail.com");
+    const [password, setPassword] = useState("Anudeep@12345");
+    const [error, setError] = useState("");
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleLogin = async () => {
-        const res = await axios.post(BASE_URL + "login", {
-            emailId,
-            password
-        }, {withCredentials: true});
+        try{
+            const res = await axios.post(BASE_URL + "login", {
+                emailId,
+                password
+            }, {withCredentials: true});
+            
+            dispatch(addUser(res.data));
+            return navigate('/');
+        } catch (error) {
+            if(error.response && error.response.data){
+                setError(error.response.data);
+            } else {
+                setError("Something went wrong. Please try again later.");
+            }
+        }
         
-        dispatch(addUser(res.data));
-        return navigate('/');
     }
 
 
@@ -37,6 +47,7 @@ const Login = () => {
                 <input type="text" className="input" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </fieldset>
                 <div className="card-actions justify-end">
+                    <p className="text-red-500">{error}</p>
                 <button className="btn btn-primary justify-center" onClick={handleLogin}>Login</button>
                 </div>
             </div>
