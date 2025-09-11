@@ -14,4 +14,5 @@ plugins: [
     require("daisyui")
   ],
 
-npm install react-router-dom  
+npm install react-router-dom
+  
