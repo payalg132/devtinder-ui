@@ -20,7 +20,7 @@ const Login = () => {
             }, {withCredentials: true});
             
             dispatch(addUser(res.data));
-            return navigate('/');
+            navigate('/');
         } catch (error) {
             if(error.response && error.response.data){
                 setError(error.response.data);
