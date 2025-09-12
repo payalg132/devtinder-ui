@@ -26,30 +26,21 @@ const Connections = () => {
     if(!connections) return;
 
   return (
-    <div className="text-center">
-        <h2 className="my-5  font-bold">Connections</h2>
-        <div className="flex flex-col w-100 justify-center mx-auto">
-            <ul className="list bg-base-100 rounded-box shadow-md">
-
-                 {connections && connections.length > 0 ? (
-    connections.map((conn, idx) => (
-      <li className="list-row" id={idx}>
-                    <div><img className="size-10 rounded-box" src={conn.photoUrl}/></div>
-                    <div>
-                    <div>{conn.firstName} {conn.lastName} </div>
-                    <div className="text-xs uppercase font-semibold opacity-60">{conn.age} {conn.gender}</div>
-                    </div>
-                    <p className="list-col-wrap text-xs">
-                    {conn.about}
-                    </p>
-                </li>
-    ))
-  ) : (
-    <li>No connections found.</li>
-  )}
-  
-            </ul>
+    <div className="text-center my-10">
+        <h2 className="text-bold text-3xl">Connections</h2>
+        {connections.map((conn, idx) => (
+          <div class="flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto">
+          <div>
+          <img alt="photo" class="w-20 h-20 rounded-full object-cover" src={conn.photoUrl} />
+          </div>
+          <div class="text-left mx-4 ">
+            <h2 class="font-bold text-xl">{conn.firstName} {conn.lastName}</h2>
+            <p>{conn.about}</p>
+          </div>
+            <a href="/">
+            <button class="btn btn-primary">Chat</button></a>
         </div>
+      ))}
     </div>
   )
 }

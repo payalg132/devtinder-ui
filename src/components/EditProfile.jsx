@@ -68,11 +68,11 @@ const EditProfile = ()  => {
                 </fieldset>
                 <fieldset className="fieldset">
                 <legend className="fieldset-legend">Age</legend>
-                <input type="text" className="input" placeholder="" value={age} onChange={(e) => setAge(e.target.value)}/>
+                <input type="text" className="input" placeholder="" value={age || ""} onChange={(e) => setAge(e.target.value)}/>
                 </fieldset>
                 <fieldset className="fieldset">
                 <legend className="fieldset-legend">Gender</legend>
-                <input type="text" className="input" placeholder="" value={gender} onChange={(e) => setGender(e.target.value)}/>
+                <input type="text" className="input" placeholder="" value={gender || ""} onChange={(e) => setGender(e.target.value)}/>
                 </fieldset>
                 <fieldset className="fieldset">
                 <legend className="fieldset-legend">About</legend>
@@ -84,7 +84,7 @@ const EditProfile = ()  => {
                 </div>
             </div>
             </div>
-            <UserCard user={{firstName, lastName, photoUrl, age, gender, about}} />
+            <UserCard user={{firstName, lastName, photoUrl, age, gender, about}} isShow={false} />
             </div>
         </div>
     );
