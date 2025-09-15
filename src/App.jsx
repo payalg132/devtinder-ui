@@ -7,6 +7,8 @@ import Feed from './components/Feed'
 import Profile from './components/Profile'
 import Connections from './components/Connections'
 import PendingRequests from './components/PendingRequests'
+import Premium from './components/Premium'
+import Chat from './components/Chat'
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
             <Route path='/Profile' element={<Profile />} />
             <Route path='/connections' element={<Connections />} />
             <Route path='/pending-requests' element={<PendingRequests />} />
+            <Route path='/premium' element={<Premium />} />
+            <Route path='/chat/:targetUserId' element={<Chat />} />
           </Route>
         </Routes> 
       </BrowserRouter>
