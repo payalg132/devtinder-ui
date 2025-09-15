@@ -12,7 +12,6 @@ const Connections = () => {
     const fetchConnections = async () => {
        try {
         const res = await axios.get(BASE_URL + "user/connections", {withCredentials: true});
-        console.log(res.data);
 
         dispatch(addConnection(res?.data));
        } catch (err) {
@@ -30,12 +29,12 @@ const Connections = () => {
     <div className="text-center my-10">
         <h2 className="text-bold text-3xl">Connections</h2>
         {connections.map((conn, idx) => (
-          <div class="flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto">
+          <div className="flex m-4 p-4 rounded-lg bg-base-300 w-1/2 mx-auto">
           <div>
-          <img alt="photo" class="w-20 h-20 rounded-full object-cover" src={conn.photoUrl} />
+          <img alt="photo" className="w-20 h-20 rounded-full object-cover" src={conn.photoUrl} />
           </div>
-          <div class="text-left mx-4 ">
-            <h2 class="font-bold text-xl">{conn.firstName} {conn.lastName}</h2>
+          <div className="text-left mx-4 ">
+            <h2 className="font-bold text-xl">{conn.firstName} {conn.lastName}</h2>
             <p>{conn.about}</p>
           </div>
             <Link to={"/chat/"+ conn._id}><button class="btn btn-primary">Chat</button></Link>

@@ -9,14 +9,13 @@ import { addUser } from "../utils/userSlice"
 
 const Body = () => {
     const dispatch = useDispatch();
-    const user = useSelector((store) => store.user);
+    const user = useSelector((store) => store.user.user);
     const navigate = useNavigate();
 
     const fetchProfile = async () => {
         try{
             if (user) return;
             const res = await axios.get(BASE_URL + "profile/view", {withCredentials: true});
-
             dispatch(addUser(res.data));
         } catch (error) {
             if(error.response && error.response.status === 401){
